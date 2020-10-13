@@ -100,30 +100,34 @@ static CGRect oldframe;
 
 
 
-- (void)hideImage:(UITapGestureRecognizer*)tap{
+- (void)hideImage:(UITapGestureRecognizer*)tap
+{
     
     UIView *backgroundView = tap.view;
 
     self.userBtnContainer.alpha = 0;
     
     [UIView animateWithDuration:0.3
-                     animations:^{
-                         self.transImageView.frame = oldframe;
-                         self.scrollView.alpha = 0;
+                     animations:^
+    {
+         self.transImageView.frame = oldframe;
+         self.scrollView.alpha = 0;
                          
-                     } completion:^(BOOL finished) {
+     }
+     completion:^(BOOL finished)
+    {
                          
-                         [backgroundView removeFromSuperview];
-                         [self.scrollView removeFromSuperview];
-                         [self.userBtnContainer removeFromSuperview];
-                         
-                     }];
+         [backgroundView removeFromSuperview];
+         [self.scrollView removeFromSuperview];
+         [self.userBtnContainer removeFromSuperview];
+    }];
     
 }
 
 #pragma mark - UIScrollViewDelegate -
 
--(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
+-(void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{
     self.currentScale = scale;
 }
 
@@ -283,6 +287,12 @@ static CGRect oldframe;
     [userBtnerror setBackgroundColor:[UIColor blueColor]];
     self.userBtn = userBtnerror;
     //[containerView addSubview:userBtnerror];
+}
+
+-(void)dealloc
+{
+    NSLog(@"dealloc");
+
 }
 
 @end

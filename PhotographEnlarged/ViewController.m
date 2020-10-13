@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
-
+#import "TransImageTool.h"
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *showImageView;
+@property (nonatomic, strong)  TransImageTool *imageTool;
+
 
 @end
 
@@ -17,6 +20,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+}
+- (IBAction)imageTap:(UITapGestureRecognizer *)sender
+{
+    NSLog(@"test");
+
+    TransImageTool *enlargeTool = [[TransImageTool alloc] init];
+    self.imageTool = enlargeTool;
+    [enlargeTool showImage:self.showImageView];
 }
 
 
